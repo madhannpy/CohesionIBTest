@@ -47,7 +47,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
                 else {
                     locationManager.stopMonitoring(for: geofence.circularRegion)
                 }
-                logger?.log("\(status ? "Started" : "Stopped") monitoring \(geofence.description)")
+                logger?.log("\(geofence.description)")
             }
         }
     }
@@ -60,11 +60,11 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
-        logger?.log("Entered Geofence:\(region.identifier)")
+        logger?.log("\nEntered Geofence:\(region.identifier)")
     }
     
     func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
-        logger?.log("Exited Geofence:\(region.identifier)")
+        logger?.log("\nExited Geofence:\(region.identifier)")
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {

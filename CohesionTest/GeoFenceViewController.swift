@@ -29,10 +29,12 @@ class GeoFenceViewController: UIViewController, LoggerDelegate {
     }
     
     @IBAction func startMonitoring(_ sender: Any) {
+        logger.log("\nStarted monitoring Geofences:")
         locationManager.monitor(status: true)
     }
     
     @IBAction func stopMonitoring(_ sender: Any) {
+        logger.log("\nStopped monitoring Geofences:")
         locationManager.monitor(status: false)
     }
 }
