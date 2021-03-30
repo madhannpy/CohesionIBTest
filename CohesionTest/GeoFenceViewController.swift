@@ -8,26 +8,24 @@
 
 import UIKit
 
-class GeoFenceViewController: UIViewController {
+class GeoFenceViewController: UIViewController, LoggerDelegate {
     
     var locationManager = LocationManager()
+    var logger = Logger()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        logger.delegate = self
+        locationManager.logger = logger
         locationManager.initialize()
     }
     
     @IBOutlet weak var textView: UITextView!
-    {
-        didSet {
-            //to improve from Notification to delegation pattern..
-            NotificationCenter.default.addObserver(self, selector: #selector(self.updateLog(notification:)), name: NSNotification.Name("LogEvent"), object: nil)
-        }
-    }
     
-    @objc func updateLog(notification: Notification) {
-        let log = notification.userInfo![0] as? String
-        textView.text = textView.text + "\n" + log!
+    func updateLog(_ text: String) {
+        print("text - \(text)")
+        textView.text = textView.text + "\n" + text
+
     }
     
     @IBAction func startMonitoring(_ sender: Any) {

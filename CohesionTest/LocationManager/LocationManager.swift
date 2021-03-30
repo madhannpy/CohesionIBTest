@@ -13,6 +13,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     
     var locationManager = CLLocationManager()
     var geofences = [Geofence]()
+    var logger: Logger?
     
     func initialize() {
         locationManager.delegate = self
@@ -20,7 +21,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
         locationManager.requestAlwaysAuthorization()
         prepareGeofences()
-        Logger.log("Location Manager Initialized")
+        logger?.log("Location Manager Initialized")
     }
     
     func prepareGeofences() {
@@ -46,28 +47,28 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
                 else {
                     locationManager.stopMonitoring(for: geofence.circularRegion())
                 }
-                Logger.log("\(status ? "Started" : "Stopped") monitoring \(geofence.description)")
+                logger?.log("\(status ? "Started" : "Stopped") monitoring \(geofence.description)")
             }
         }
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedAlways || CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedWhenInUse {
-            Logger.log("Authorization status changed - \(String(describing: status))")
+            logger?.log("Authorization status changed - \(String(describing: status))")
             
         }
     }
     
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
-        Logger.log("Entered Geofence:\(region.identifier)")
+        logger?.log("Entered Geofence:\(region.identifier)")
     }
     
     func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
-        Logger.log("Exited Geofence:\(region.identifier)")
+        logger?.log("Exited Geofence:\(region.identifier)")
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        Logger.log(error.localizedDescription)
+        logger?.log(error.localizedDescription)
     }
 }
 

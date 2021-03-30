@@ -20,11 +20,17 @@ class Utility {
     
 }
 
+protocol LoggerDelegate: NSObject {
+    func updateLog(_ text: String)
+}
+
 class Logger {
-    static func log(_ text: String) {
+    var delegate: LoggerDelegate?
+    func log(_ text: String) {
         print(text)
         FirebaseAnalytics.Analytics.logEvent(text, parameters: nil)
-        NotificationCenter.default.post(name: NSNotification.Name("LogEvent"), object: nil, userInfo: [0 : text])
+        delegate?.updateLog(text)
+        //NotificationCenter.default.post(name: NSNotification.Name("LogEvent"), object: nil, userInfo: [0 : text])
     }
 }
 
