@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<gpx version="1.1" creator="Xcode">
+
+    <wpt lat="12.847429581419965" lon="77.67455252874291">
+        <name>Electronics City</name>
+        <time>2014-09-24T14:00:00Z</time>
+    </wpt>
+
+    <wpt lat="12.846168791692097" lon="77.68285329509175">
+      <name>Fruit Market</name>
+      <time>2014-09-24T14:00:10Z</time>
+    </wpt>
+
+    <wpt lat="12.838912018056849" lon="77.6782326871494">
+        <name>Gas Station</name>
+        <time>2014-09-24T14:00:20Z</time>
+    </wpt>
+
+    <wpt lat="12.844442632155902" lon="77.6746070949326">
+        <name>Bank</name>
+        <time>2014-09-24T14:00:30Z</time>
+    </wpt>
+</gpx>
