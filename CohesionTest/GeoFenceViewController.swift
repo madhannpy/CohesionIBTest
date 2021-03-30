@@ -23,9 +23,9 @@ class GeoFenceViewController: UIViewController, LoggerDelegate {
     @IBOutlet weak var textView: UITextView!
     
     func updateLog(_ text: String) {
-        print("text - \(text)")
         textView.text = textView.text + "\n" + text
-
+        textView.scrollToBottom()
+        
     }
     
     @IBAction func startMonitoring(_ sender: Any) {
@@ -34,5 +34,15 @@ class GeoFenceViewController: UIViewController, LoggerDelegate {
     
     @IBAction func stopMonitoring(_ sender: Any) {
         locationManager.monitor(status: false)
+    }
+}
+
+extension UITextView {
+    func scrollToBottom() {
+        if self.text.count > 0 {
+            let location = self.text.count - 1
+            let bottom = NSMakeRange(location, 1)
+            self.scrollRangeToVisible(bottom)
+        }
     }
 }
