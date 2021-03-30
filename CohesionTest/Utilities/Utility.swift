@@ -11,13 +11,12 @@ import CoreLocation
 import FirebaseAnalytics
 
 class Utility {
-    static func coordinatesArray() -> [CLLocationCoordinate2D] {
+    static func coordinatesData() -> [(coordinate:CLLocationCoordinate2D, name: String)] {
         let parser = GPXParser()
         let gpx: String = Bundle.main.path(forResource: "geofence", ofType: "gpx")!
         let coordinates = parser.parseCoordinates(fromGpxFile: gpx)
         return coordinates!
     }
-    
 }
 
 protocol LoggerDelegate: NSObject {
@@ -30,15 +29,17 @@ class Logger {
         print(text)
         FirebaseAnalytics.Analytics.logEvent(text, parameters: nil)
         delegate?.updateLog(text)
-        //NotificationCenter.default.post(name: NSNotification.Name("LogEvent"), object: nil, userInfo: [0 : text])
     }
 }
 
 class GPXParser: NSObject, XMLParserDelegate {
     
     var coordinates = [CLLocationCoordinate2D]()
+    var names = [String]()
+    var data = ""
+    var gpxData = [(CLLocationCoordinate2D, String)]()
 
-    func parseCoordinates(fromGpxFile filePath: String) -> [CLLocationCoordinate2D]? {
+    func parseCoordinates(fromGpxFile filePath: String) -> [(CLLocationCoordinate2D, String)]? {
         guard let data = FileManager.default.contents(atPath: filePath) else { return nil }
     
         let parser = XMLParser(data: data)
@@ -47,16 +48,31 @@ class GPXParser: NSObject, XMLParserDelegate {
         let success = parser.parse()
     
         guard success else { return nil }
-        return coordinates
+        
+        for index in 0..<coordinates.count {
+            gpxData.append((coordinates[index], names[index]))
+        }
+        return gpxData
     }
     
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
-        guard elementName == "trkpt" || elementName == "wpt" else { return }
+        guard elementName == "trkpt" || elementName == "wpt" || elementName == "name" else { return }
         guard let latString = attributeDict["lat"], let lonString = attributeDict["lon"] else { return }
         guard let lat = Double(latString), let lon = Double(lonString) else { return }
         guard let latDegrees = CLLocationDegrees(exactly: lat), let lonDegrees = CLLocationDegrees(exactly: lon) else { return }
-
         coordinates.append(CLLocationCoordinate2D(latitude: latDegrees, longitude: lonDegrees))
     }
-
+    
+    func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
+        if (elementName == "name"){
+            names.append(data)
+        }
+    }
+    
+    func parser(_ parser: XMLParser, foundCharacters string: String) {
+        let data = string.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+        self.data = data
+        
+    }
+    
 }
