@@ -15,19 +15,16 @@ class Geofence {
     var radius : CLLocationDistance
     var name: String
     var monitoredStatus: Bool
-    
-    func circularRegion() -> (CLCircularRegion) {
-        let region = (CLCircularRegion.init(center: center,
-        radius: radius,
-        identifier: name))
-        return region
-    }
+    var circularRegion: CLCircularRegion
     
     init(center: CLLocationCoordinate2D, radius:CLLocationDistance, name identifier: String) {
         self.center = center
         self.radius = radius
         name = identifier
         monitoredStatus = false
+        circularRegion = CLCircularRegion.init(center: center,
+        radius: radius,
+        identifier: identifier)
     }
     
     var description: String {

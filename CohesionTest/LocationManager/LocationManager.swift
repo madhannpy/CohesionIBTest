@@ -39,13 +39,13 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
             }
             else {
                 geofence.monitoredStatus = status
-                geofence.circularRegion().notifyOnEntry = status
-                geofence.circularRegion().notifyOnExit = status
+                geofence.circularRegion.notifyOnEntry = status
+                geofence.circularRegion.notifyOnExit = status
                 if status == true {
-                    locationManager.startMonitoring(for: geofence.circularRegion())
+                    locationManager.startMonitoring(for: geofence.circularRegion)
                 }
                 else {
-                    locationManager.stopMonitoring(for: geofence.circularRegion())
+                    locationManager.stopMonitoring(for: geofence.circularRegion)
                 }
                 logger?.log("\(status ? "Started" : "Stopped") monitoring \(geofence.description)")
             }
