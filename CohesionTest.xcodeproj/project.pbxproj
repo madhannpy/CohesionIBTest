@@ -19,7 +19,7 @@
 		99506D1E260E0FB800AA2EE0 /* GeoFenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99506D1D260E0FB800AA2EE0 /* GeoFenceViewController.swift */; };
 		99F01778260F4E4300E576E9 /* Geofence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F01777260F4E4300E576E9 /* Geofence.swift */; };
 		99F0177A260F788C00E576E9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 99F01779260F788C00E576E9 /* GoogleService-Info.plist */; };
-		99FBD3602611FAE100F6AE9B /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FBD35F2611FAE100F6AE9B /* Utility.swift */; };
+		99FBD3602611FAE100F6AE9B /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FBD35F2611FAE100F6AE9B /* Utilities.swift */; };
 		99FBD3632612197C00F6AE9B /* Readme.md in Resources */ = {isa = PBXBuildFile; fileRef = 99FBD3622612197C00F6AE9B /* Readme.md */; };
 		99FBD36926121F8500F6AE9B /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FBD36826121F8500F6AE9B /* LocationManager.swift */; };
 		ED7A8C06910B8291163B157B /* libPods-CohesionTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 802C9C97AE9B26698E30A9E6 /* libPods-CohesionTest.a */; };
@@ -53,7 +53,7 @@
 		99506D1D260E0FB800AA2EE0 /* GeoFenceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoFenceViewController.swift; sourceTree = "<group>"; };
 		99F01777260F4E4300E576E9 /* Geofence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Geofence.swift; sourceTree = "<group>"; };
 		99F01779260F788C00E576E9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		99FBD35F2611FAE100F6AE9B /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		99FBD35F2611FAE100F6AE9B /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		99FBD3622612197C00F6AE9B /* Readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Readme.md; sourceTree = "<group>"; };
 		99FBD36826121F8500F6AE9B /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		A14D6CBE4541689CDC1F0120 /* Pods-CohesionTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CohesionTest.debug.xcconfig"; path = "Target Support Files/Pods-CohesionTest/Pods-CohesionTest.debug.xcconfig"; sourceTree = "<group>"; };
@@ -148,7 +148,7 @@
 		99FBD36526121F1200F6AE9B /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				99FBD35F2611FAE100F6AE9B /* Utility.swift */,
+				99FBD35F2611FAE100F6AE9B /* Utilities.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -339,7 +339,7 @@
 			files = (
 				99506D03260DE8E400AA2EE0 /* CohesionTest.xcdatamodeld in Sources */,
 				99F01778260F4E4300E576E9 /* Geofence.swift in Sources */,
-				99FBD3602611FAE100F6AE9B /* Utility.swift in Sources */,
+				99FBD3602611FAE100F6AE9B /* Utilities.swift in Sources */,
 				99FBD36926121F8500F6AE9B /* LocationManager.swift in Sources */,
 				99506CF9260DE8E400AA2EE0 /* AppDelegate.swift in Sources */,
 				99506CFB260DE8E400AA2EE0 /* SceneDelegate.swift in Sources */,

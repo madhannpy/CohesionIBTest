@@ -10,8 +10,8 @@ import Foundation
 import CoreLocation
 import FirebaseAnalytics
 
-class Utility {
-    static func coordinatesData() -> [(coordinate:CLLocationCoordinate2D, name: String)] {
+class Utilities {
+    static func coordinatesDataArray() -> [(coordinate:CLLocationCoordinate2D, name: String)] {
         let parser = GPXParser()
         let gpx: String = Bundle.main.path(forResource: "geofence", ofType: "gpx")!
         let coordinates = parser.parseCoordinates(fromGpxFile: gpx)

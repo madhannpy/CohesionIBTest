@@ -25,7 +25,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     }
     
     func prepareGeofences() {
-        let coordinateData = Utility.coordinatesData()
+        let coordinateData = Utilities.coordinatesDataArray()
         for index in 0..<coordinateData.count {
             let geofence = Geofence(center: coordinateData[index].coordinate, radius: 300, name: coordinateData[index].name)
             geofences.append(geofence)
